@@ -8,8 +8,7 @@ services:
       - discovery.type=single-node
       - xpack.security.enabled=false
     ports:
-      - "9200:9200" # for API
-      - "5005:5005" # for debug
+      - "9200:9200"
     networks:
       - esnet
 
@@ -17,7 +16,8 @@ services:
     build: .
     container_name: springboot-app
     ports:
-      - "8080:8080"
+      - "8080:8080" # for API
+      - "5005:5005" # for debug
     environment:
       - SPRING_ELASTICSEARCH_URIS=http://elasticsearch:9200
     depends_on:
