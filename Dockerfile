@@ -10,5 +10,8 @@ COPY build/libs/*.jar app.jar
 # Expose port
 EXPOSE 8080
 
+# Debug
+ENV JAVA_TOOL_OPTIONS="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005"
+
 # Run the app
 ENTRYPOINT ["java", "-jar", "app.jar"]
